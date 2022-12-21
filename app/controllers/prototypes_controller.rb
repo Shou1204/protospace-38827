@@ -22,7 +22,6 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-    # binding.pry
   end
 
   def update
@@ -32,6 +31,12 @@ class PrototypesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    prototype = Prototype.find(params[:id])
+    prototype.destroy
+    redirect_to root_path
   end
 
   private
