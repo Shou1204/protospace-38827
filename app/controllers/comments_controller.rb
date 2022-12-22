@@ -5,8 +5,7 @@ class CommentsController < ApplicationController
         redirect_to prototype_path(@comment.prototype)# prototype_path(params[:id]) # 今回の実装には関係ありませんが、このようにPrefixでパスを指定することが望ましいです。
       else
         @prototype = @comment.prototype
-        # @tweet = @comment.tweet
-        # @comments = @tweet.comments
+        @comments = @prototype.comments.includes(:user)
         render "prototypes/show" # views/tweets/show.html.erbのファイルを参照しています。
       end
     end
